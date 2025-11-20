@@ -1,21 +1,51 @@
 package com.example.demo.dto.request;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.time.LocalDate;
 
 public class StudentCreationResquest {
-    private String id;
+
+    private String Student_ID;
+    private String SName;
+    private String phone;
+    private String Password;
     private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
     private LocalDate dob;
 
-    public String getId() {
-        return id;
+    public String getStudent_ID() {
+        return Student_ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStudent_ID(String student_ID) {
+        Student_ID = student_ID;
+    }
+
+    public String getSName() {
+        return SName;
+    }
+
+    public void setSName(String SName) {
+        this.SName = SName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public String getUsername() {
@@ -24,30 +54,6 @@ public class StudentCreationResquest {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public LocalDate getDob() {

@@ -1,29 +1,68 @@
 package com.example.demo.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 
 @Entity
+@Table(name="student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(generator = "student-id-generator")
+    @GenericGenerator(
+            name = "student-id-generator",
+            strategy = "com.example.demo.generator.StudentIdGenerator")
+    @Column(name = "Student_ID")
+    private String Student_ID;
+
+    @Column(name = "SName")
+    @JsonProperty("SName")
+    private String SName;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "Password")
+    private String Password;
+
+    @Column(name = "username")
     private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
+
+    @Column(name = "dob")
     private LocalDate dob;
 
-    public String getId() {
-        return id;
+    public String getStudent_ID() {
+        return Student_ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStudent_ID(String student_ID) {
+        Student_ID = student_ID;
+    }
+
+    public String getSName() {
+        return SName;
+    }
+
+    public void setSName(String SName) {
+        this.SName = SName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     public String getUsername() {
@@ -32,30 +71,6 @@ public class Student {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public LocalDate getDob() {
