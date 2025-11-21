@@ -2,11 +2,17 @@ package com.example.demo.Entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Setter
+@Getter
 @Table(name="student")
 public class Student {
     @Id
@@ -14,70 +20,30 @@ public class Student {
     @GenericGenerator(
             name = "student-id-generator",
             strategy = "com.example.demo.generator.StudentIdGenerator")
-    @Column(name = "Student_ID")
+    @Column(name = "Student_ID",nullable = false)
     private String Student_ID;
 
-    @Column(name = "SName")
+    @Column(name = "SName",nullable = false)
     @JsonProperty("SName")
     private String SName;
 
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "Password")
+    @Column(name = "Password",nullable = false)
     private String Password;
 
-    @Column(name = "username")
+    @Column(name = "username",nullable = false)
     private String username;
 
-    @Column(name = "dob")
+    @Column(name = "dob",nullable = false)
     private LocalDate dob;
 
-    public String getStudent_ID() {
-        return Student_ID;
-    }
-
-    public void setStudent_ID(String student_ID) {
-        Student_ID = student_ID;
-    }
-
-    public String getSName() {
-        return SName;
-    }
-
-    public void setSName(String SName) {
-        this.SName = SName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
+    //@ManyToMany
+   // @JoinTable(
+   //         name = "student_has_course",
+   //         joinColumns = @JoinColumn(name = "Student_Student_ID"),
+       //     inverseJoinColumns = @JoinColumn(name = "Course_Course_ID")
+  //  )
+  //  private Set<Course> courses = new HashSet<>();
 }

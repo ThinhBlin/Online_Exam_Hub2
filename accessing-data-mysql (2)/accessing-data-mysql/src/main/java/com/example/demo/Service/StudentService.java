@@ -1,8 +1,8 @@
 package com.example.demo.Service;
 
 import com.example.demo.Entity.Student;
-import com.example.demo.Repository.StudentRespository;
-import com.example.demo.dto.request.StudentCreationResquest;
+import com.example.demo.Repository.StudentRepository;
+import com.example.demo.dto.request.StudentCreationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class StudentService {
     @Autowired
-    private StudentRespository studentRespository;
-    public Student createStudent(StudentCreationResquest request){
+    private StudentRepository studentRepository;
+    public Student createStudent(StudentCreationRequest request){
         Student student =new Student();
         student.setSName(request.getSName());
         student.setUsername(request.getUsername());
@@ -21,9 +21,12 @@ public class StudentService {
         student.setDob(request.getDob());
 
 
-        return studentRespository.save(student);
+        return studentRepository.save(student);
     }
     public List<Student> getStudents(){
-        return studentRespository.findAll();
+        return studentRepository.findAll();
     }
+    //public List<Student> getStudentsByCourseId(String courseId) {
+     //   return studentRepository.findStudentsByCourseId(courseId);
+   // }
 }
